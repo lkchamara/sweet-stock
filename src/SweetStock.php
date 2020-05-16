@@ -2,7 +2,7 @@
 
 namespace App;
 
-class SweetStock
+class SweetStock extends Items
 {
     public $name;
 
@@ -23,16 +23,21 @@ class SweetStock
 
     public function tick()
     {
-        $this->quality = (($this->name == 'Aged Brie' or $this->name == 'Backstage passes to a TAFKAL80ETC concert') and $this->quality < 50) ? ++$this->quality : $this->quality;
-        $this->quality = ($this->name == 'Backstage passes to a TAFKAL80ETC concert' and $this->quality < 50) ? (($this->sellIn < 11) ? ($this->sellIn < 6) ? $this->quality+=2 : ++$this->quality : $this->quality) : $this->quality;
+        if ($this->name == 'normal') {
+            $this->normalItems();
 
-        $this->sellIn = ($this->name != 'Sulfuras, Hand of Ragnaros') ? --$this->sellIn : $this->sellIn;
+        } else if ($this->name === 'Aged Brie') {
+            $this->brieItems();
 
-        $this->quality = ($this->sellIn < 0 and $this->name == 'Aged Brie' and $this->quality < 50) ? ++$this->quality : $this->quality;
-        $this->quality = ($this->sellIn < 0 and $this->name == 'Backstage passes to a TAFKAL80ETC concert') ? 0 : $this->quality;
+        } else if ($this->name === 'Sulfuras, Hand of Ragnaros') {
+            $this->sulfurasItems();
 
-        $this->quality = ($this->name == 'normal' and $this->quality > 0) ? (($this->sellIn < 0) ? $this->quality-=2 : --$this->quality) : $this->quality;
+        } else if ($this->name === 'Backstage passes to a TAFKAL80ETC concert') {
+            $this->backstagePasses();
 
-        $this->quality = ($this->name == 'Conjured Mana Cake' and $this->quality > 0)?(($this->sellIn < 0)?$this->quality-=4:$this->quality-=2):$this->quality;
+        } else if ($this->name === 'Conjured Mana Cake') {
+            $this->conjuredItems();
+            
+        }
     }
 }
