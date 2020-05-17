@@ -15,6 +15,7 @@ class SweetStock extends Items
         $this->name = $name;
         $this->quality = $quality;
         $this->sellIn = $sellIn;
+        $this->initial();
     }
 
     public static function of($name, $quality, $sellIn) {
@@ -23,7 +24,6 @@ class SweetStock extends Items
 
     public function tick()
     {
-
         if ($this->name == 'normal') {
             $this->normalItems();
 

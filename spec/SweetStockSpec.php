@@ -124,8 +124,6 @@ describe('Sweet Stock', function () {
             it ('ensures Sulfuras item quality before tick', function() {
                 $item = SweetStock::of('Sulfuras, Hand of Ragnaros', 10, 5);
 
-                $item->tick();
-                
                 expect($item->quality)->toBe(80);
             });
 

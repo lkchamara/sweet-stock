@@ -5,6 +5,12 @@ namespace App;
 class Items
 {
 
+    public function initial() {
+        if ($this->name === 'Sulfuras, Hand of Ragnaros'){
+            $this->quality = 80;
+        }
+    }
+
     public function normalItems() {
 
         $this->degradeSellIn(1);
