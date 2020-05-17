@@ -13,7 +13,7 @@ class SweetStock extends Items
     public function __construct($name, $quality, $sellIn)
     {
         $this->name = $name;
-        $this->quality = $name === 'Sulfuras, Hand of Ragnaros' ? 80 : $quality;
+        $this->quality = $quality;
         $this->sellIn = $sellIn;
     }
 
@@ -23,6 +23,7 @@ class SweetStock extends Items
 
     public function tick()
     {
+
         if ($this->name == 'normal') {
             $this->normalItems();
 

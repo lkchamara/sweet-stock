@@ -4,6 +4,7 @@ namespace App;
 
 class Items
 {
+
     public function normalItems() {
 
         $this->degradeSellIn(1);
@@ -28,7 +29,7 @@ class Items
     }
 
     public function sulfurasItems() {
-
+        $this->quality = 80;
     }
 
     public function backstagePasses () {
